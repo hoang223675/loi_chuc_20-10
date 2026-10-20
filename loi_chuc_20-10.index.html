@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chúc mừng 20/10 🌸</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;min-height:100vh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(ellipse at center,#240b20 0%,#09030c 60%,#000 100%);
+  color:#ff9bd5;font-family:system-ui,sans-serif;text-align:center;
+}
+.card{position:relative;z-index:2;padding:24px;width:100%;max-width:520px}
+h1{
+  font-size:clamp(32px,9vw,52px);line-height:1.45;
+  text-shadow:0 0 8px #ff4db8,0 0 24px #ff168c;
+  animation:glow 2s infinite alternate;
+}
+.date{font-size:clamp(48px,14vw,76px);font-weight:900;
+  color:#ffd0e9;text-shadow:0 0 20px #ff4db8}
+p{font-size:18px;line-height:1.8}
+.flower{position:absolute;top:-40px;pointer-events:none;
+  animation:fall linear forwards;z-index:1}
+button{
+  background:#ff65b9;color:#24001b;border:0;border-radius:30px;
+  padding:13px 24px;font-size:16px;font-weight:bold;
+  box-shadow:0 0 20px #ff168c;cursor:pointer
+}
+@keyframes glow{to{filter:brightness(1.5)}}
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  100%{transform:translateY(115vh) rotate(600deg);opacity:0}
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div style="font-size:46px">🌸 💗 🌸</div>
+  <h1>Chúc các bạn nữ</h1>
+  <div class="date">20/10</div>
+  <h1>vui vẻ!</h1>
+  <p>
+    Chúc các bạn luôn xinh tươi, hạnh phúc,<br>
+    gặp nhiều may mắn và luôn rạng rỡ<br>
+    như những đóa hoa nhé! 🌷
+  </p>
+  <button onclick="celebrate()">💗 Gửi một lời chúc</button>
+  <p id="msg" style="font-size:15px"></p>
+</div>
+<script>
+const symbols=["🌸","🌷","💗","🌺","✨"];
+function petal(){
+  const el=document.createElement("span");
+  el.className="flower";
+  el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(16+Math.random()*22)+"px";
+  el.style.animationDuration=(5+Math.random()*6)+"s";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),12000);
+}
+setInterval(petal,350);
+function celebrate(){
+  document.getElementById("msg").textContent=
+    "Chúc bạn có một ngày 20/10 thật tuyệt vời! 💕";
+  for(let i=0;i<20;i++)setTimeout(petal,i*80);
+}
+</script>
+</body>
+</html>
